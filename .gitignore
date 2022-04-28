@@ -1,0 +1,5 @@
+counts/
+fastq_path/
+hdf5r-master/
+*h5ad.gz
+*.pkl
