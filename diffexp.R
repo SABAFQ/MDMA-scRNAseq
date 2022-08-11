@@ -36,21 +36,6 @@ plotDisp <- function(dds){
 }
 
 
-correct_batch <- function (dds,gr,out){
-    vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
-    p0 <- plot_PCA(vsd, gr, 'Before removeBatchEffect')
-    mat <- assay(vsd)
-    
-    mat <- limma::removeBatchEffect(mat, vsd$batch) 
-    assay(vsd) <- mat
-    p1 <- plot_PCA(vsd, gr, 'After removeBatchEffect',legend="right")
-    counts_batch_corrected <- assay(vsd)
-    
-    if (out == 'plot'){return (p0 + p1)}
-    if (out == 'vsd') {return (vsd)}
-    if (out == 'cbc') {return (counts_batch_corrected)}
-} 
-
 get_res<- function(fit,coef){
     fc <- fit[,coef]$coef [,coef] %>% data.frame 
     fc <- fc %>% dplyr::rename(log2FoldChange=colnames(fc))
@@ -94,13 +79,13 @@ efit2 <- eBayes(vfit2)
 res_MDMAvsMeth <- get_res(efit2,'MDMAvsMeth')
 write.table(
     res_MDMAvsMeth,
-    paste0('diffexp/',name,'_delta_exp_MDMAvsMeth.txt'),
+    paste0('diffexp/',name,'/delta_exp_MDMAvsMeth.txt'),
     sep='\t', quote=FALSE, col.names=TRUE, row.names=TRUE
 )
 
 res_MDMAvsSaline <- get_res(efit2,'MDMAvsSaline')
 write.table(
     res_MDMAvsSaline,
-    paste0('diffexp/',name,'delta_exp_MDMAvsSaline.txt'),
+    paste0('diffexp/',name,'/delta_exp_MDMAvsSaline.txt'),
     sep='\t', quote=FALSE, col.names=TRUE, row.names=TRUE
 )

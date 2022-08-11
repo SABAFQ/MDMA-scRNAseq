@@ -2,7 +2,7 @@ diffexp/
 counts/
 fastq_path/
 hdf5r-master/
-.ipynb_checkpoints/
+**.ipynb_checkpoints/
 __pycache__/
 *h5ad.gz
 *.pkl
