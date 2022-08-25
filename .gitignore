@@ -6,3 +6,4 @@ hdf5r-master/
 __pycache__/
 *h5ad.gz
 *.pkl
+preprocessing/scvi_model/
