@@ -1,4 +1,5 @@
 import pickle
+import numpy as np 
 import scanpy as sc
 import pandas as pd
 
@@ -38,3 +39,31 @@ def rank_genes_to_df(adata,n=50):
         for group in groups for key in ['names', 'scores']}).head(n)
     
     return df
+
+
+def find_top(df,value, value_thr, stat, stat_thr, drop_dup=False,silent=False):
+    """
+    Select rows (genes) which has value >= value_thr & stat < stat_thr 
+    """
+    up = df.iloc[
+        [i for i,l in enumerate(
+            np.array([
+                np.array(df.loc[:,value] >= value_thr),
+                np.array(df.loc[:,stat] < stat_thr)]).all(axis=0)) if l == 1]
+            ,:] 
+    dn = df.iloc[
+        [i for i,l in enumerate(
+            np.array([
+                np.array(df.loc[:,value] <= -1*(value_thr)),
+                np.array(df.loc[:,stat] < stat_thr)]).all(axis=0)) if l == 1]
+            ,:] 
+        
+    if drop_dup==True:
+        up = up.sort_values(stat).drop_duplicates(subset='gene_id', keep="last")
+        dn = dn.sort_values(stat).drop_duplicates(subset='gene_id', keep="last")
+    
+    if not silent:
+        print ('up: ', up.shape[0])
+        print ('down:', dn.shape[0])
+
+    return up, dn

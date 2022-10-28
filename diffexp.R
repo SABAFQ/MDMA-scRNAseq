@@ -65,7 +65,8 @@ design <- model.matrix(~0 + conds)
 colnames(design) <- gsub("conds", "", colnames(design))
 
 contr.matrix <- makeContrasts(
-    MDMAvsMeth= MDMA - Meth, 
+    MDMAvsMeth= MDMA - Meth,
+    MethvsSaline= Meth - Saline,
     MDMAvsSaline= MDMA - Saline,
     levels = colnames(design)
 )
@@ -87,5 +88,12 @@ res_MDMAvsSaline <- get_res(efit2,'MDMAvsSaline')
 write.table(
     res_MDMAvsSaline,
     paste0('diffexp/',name,'/delta_exp_MDMAvsSaline.txt'),
+    sep='\t', quote=FALSE, col.names=TRUE, row.names=TRUE
+)
+
+res_MethvsSaline <- get_res(efit2,'MethvsSaline')
+write.table(
+    res_MethvsSaline,
+    paste0('diffexp/',name,'/delta_exp_MethvsSaline.txt'),
     sep='\t', quote=FALSE, col.names=TRUE, row.names=TRUE
 )
