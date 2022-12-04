@@ -21,12 +21,12 @@ def normalization(adata,lognorm=False):
         sc.pp.log1p(adata)
 
 
-def clustering(adata,lognorm=False,rep=None, n_neighbor=30,n_comps=50,res=None):
+def clustering(adata,lognorm=False,rep=None, n_neighbor=30,n_comps=50,res=None,key="leiden"):
     sc.pp.pca(adata,n_comps=n_comps)
     sc.pp.neighbors(adata, use_rep=rep, n_neighbors=n_neighbor)   
     # why can't we just work with the default neighbors?
     sc.tl.umap(adata)
-    sc.tl.leiden(adata,resolution=res)
+    sc.tl.leiden(adata,resolution=res,key_added=key)
 
 
 def rank_genes_to_df(adata,n=50):
