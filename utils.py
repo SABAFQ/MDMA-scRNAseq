@@ -12,8 +12,6 @@ def load_obj(name ):
         return pickle.load(f)
 
     
-<<<<<<< HEAD
-=======
 def normalization(adata,lognorm=False):
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
@@ -42,7 +40,6 @@ def rank_genes_to_df(adata,n=50):
     return df
 
 
->>>>>>> bd825b58299e6e3f64c31eec357c17b1f40fe81c
 def find_top(df,value, value_thr, stat, stat_thr, drop_dup=False,silent=False):
     """
     Select rows (genes) which has value >= value_thr & stat < stat_thr 
