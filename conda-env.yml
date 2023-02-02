@@ -1,0 +1,17 @@
+name: sc-analysis
+channels:
+  - anaconda
+  - bioconda
+  - conda-forge
+dependencies:
+  - matplotlib-venn
+  - scrublet
+  - scvi-tools
+  - python-igraph
+  - scikit-misc
+  - upsetplot
+  - scanpy
+  - xlsxwriter
+  - leidenalg
+  - tsne
+  - ipykernel
