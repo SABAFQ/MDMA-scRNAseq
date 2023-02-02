@@ -38,7 +38,6 @@ plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 
-<<<<<<< HEAD
 def normalization(adata,lognorm=False):
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
@@ -67,7 +66,6 @@ def rank_genes_to_df(adata,n=50):
     return df
 
 
-=======
 def add_marker_feature(adata,marker,marker_name,clusters_name,thr = 0,figsize=(10,4)):
 
     adata.obs[marker_name] = ''
@@ -99,4 +97,3 @@ def add_marker_feature(adata,marker,marker_name,clusters_name,thr = 0,figsize=(1
     ax.set_yscale('log')
     ax.set_ylabel('# of cells')
     return ax
->>>>>>> bd825b58299e6e3f64c31eec357c17b1f40fe81c
