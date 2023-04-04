@@ -6,4 +6,7 @@ __pycache__/
 *h5ad.gz
 *.pkl
 **.DS_Store
-preprocessing/scvi_model/
+preprocessing/scvi_model*/
+diffexp/*_counts.txt
+diffexp/*_meta.txt
+diffexp/*/
