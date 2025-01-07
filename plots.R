@@ -2,16 +2,16 @@ suppressPackageStartupMessages(library(patchwork))
 suppressPackageStartupMessages(library(tidyverse))
 
 plot_Volcano <- function(res, lfc.cutoff  = 1,pval.cutoff = 0.05, title='', x_min=-20,x_max=20, y_max=FALSE){
-    res$sig <- as.factor(res$pvalue < pval.cutoff & abs(res$log2FoldChange) > lfc.cutoff)
+    res$sig <- as.factor(res$P.Value < pval.cutoff & abs(res$logFC) > lfc.cutoff)
     relevel(res$sig, ref=TRUE)
     res <- res %>% mutate(name=rownames(res))
     
-    data = subset(res[order(res$pvalue),], sig == TRUE)[1:7,]
+    data = subset(res[order(res$P.Value),], sig == TRUE)[1:7,]
     
-    if (y_max == FALSE){-log10(min(res$pvalue))}
+    if (y_max == FALSE){-log10(min(res$P.Value))}
     
     vol = res %>% ggplot(
-        aes(x=log2FoldChange, y=-log10(pvalue), colour=sig, fill=sig)) +
+        aes(x=logFC, y=-log10(P.Value), colour=sig, fill=sig)) +
         geom_point(aes(color = sig),alpha = 1/10) +
             geom_hline(yintercept=-log10(pval.cutoff), linetype="dashed", alpha = 4/10) +
             geom_vline(xintercept=lfc.cutoff, linetype="dashed", alpha = 4/10) +
