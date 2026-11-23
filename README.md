@@ -12,7 +12,7 @@ We hypothesized that MDMA preferentially induces immediate early gene programs a
 
 ## Poster Presentation
 
-- Faghihzadeh, S., Arab, A., Wu, X., & Heifets, B. D. (2025). **Single-cell transcriptomic insights into the neural mechanisms of MDMA’s prosocial and addictive effects in the nucleus accumbens.** _3rd NYC RNA Symposium, New York, NY
+- Faghihzadeh, S., Arab, A., Wu, X., & Heifets, B. D. (2025). **Single-cell transcriptomic insights into the neural mechanisms of MDMA’s prosocial and addictive effects in the nucleus accumbens.** _3rd NYC RNA Symposium, New York, NY_
 
 <p align="center">
   <img src="2025 NYC RNA Symposium Poster.png" alt="Poster" width="600" />
